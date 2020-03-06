@@ -1,0 +1,60 @@
+
+
+	Problema 1
+
+	Precizari initiale:
+	-t = scorul pe care il obtine Tuzgu
+	-r = scorul pe care il obtine Ritza
+	Aceasta problema este rezolvata printr-o abordare de tip Greedy. Am 
+inceput prin sortarea vectorului in care se afla elementele. Daca initial 
+vectorul este sortat initial, atunci am inceput operatiile pe vector in
+sens invers deoarece Tuzgu doreste sa acumuleze un scor cat mai mare. 
+Asadar, in conditiile in care el va alege primul, mereu o sa ia un element 
+mai mare decat Ritza. i-ul scade cu doua unitati deoarece prima data ia 
+Tuzgu si apoi Ritza, adica ultimul element, respectiv penultimul element. 
+Deci se sare peste 2 elemente care deja sunt luate. Functia returneaza 
+diferenta de scor dintre Tuzgu si Ritza.
+
+
+
+
+	Problema 2
+
+	Precizari initiale:
+	-dp este matricea pe care am construit formula pentru programare dinamica
+	Din moment ce problema cere minimizarea solutiei, am cautat o recurenta 
+care sa-l gaseasca si am gasit una bidimensionala: dp[i][j].
+	Primul parametru al matricii este n - numarul de elemente din vector, ce 
+va reprezenta liniile, iar cel de-al doilea parametru e k+1, numarul de 
+coloane, k reprezentand numerele eliminate. Asadar, raspunsul aceste probleme 
+se afla pe ultima linie si ultima coloana.
+	Dupa formarea matricei am realizat ca Tuzgu mereu o sa ia de pe pozitia
+para a liniei, iar Ritza de pe pozitia impara. Asa ca, formula mea aduna cu
+elementul curent in coloana e para, si scade cand e impara. Prima parcurgere
+este pentru diagonala principala, iar cea de a doua este pentru ce se afla
+deasupra ei. La fiecare iteratie, adica la fiecare parcurgere pe linie, o sa
+avem inca un element eliminat, ajungandu-se la ultima linie sa fie doar un
+element, solutia problemei.
+
+
+	Problema 3
+
+	Precizari initiale:
+	-r = diferenta dintre suma si scorul lui Tuzgu
+	-s = suma elementelor din vector
+	Aceasta problema este rezolvata prin programare dinamica, iar solutia este 
+calculata cu ajutorul unei matrici bidimensionale dp[i][j].
+	Prima data am calculat suma elementelor din vector, apoi am tratat 
+cazurile de baza. Orice element de pe diagonala principala va fi egal cu
+elementul de pe acea pozitie din vector, mai exact elementul pe care il va 
+alege Tuzgu. Pentru fiecare element de deasupra diagonalei principale, se 
+va lua maximul dintre elementul curent si elementul urmator pentru ca va fi 
+tratat cazul in care Tuzgu are de ales intre 2 elemente.
+	In urmatoare bucla se va lua in considerare ca jucatorul va alege intre
+mai mult de 2 elemente. Atunci cand jucatorul alege, el va lua in considerare
+si ce ii ramane adversarului de ales. Deci, chiar tentat sa aleaga valoare mai 
+mare, el sa va uita ca nu cumva sa elibereze un element mult mai mai mare.
+De aceea va face maximul dintre ce suma va avea al doilea jucator in ambele 
+cazuri. Rezultatul se va salva pe prima linie si ultima coloana.
+	Dupa aflarea rezultatului lui Tuzgu, se afla si scorul Ritzei, iar apoi 
+se calculeaza diferenta maxima pe care o poate obtine Tuzgu.
